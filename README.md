@@ -47,3 +47,4 @@ npm init --yes
 [1° Curso de React para Completos Iniciantes [2024]](https://www.youtube.com/watch?v=2RWsLmu8yVc)  
 [2° Install Tailwind CSS with Vite](https://tailwindcss.com/docs/guides/vite)  
 [3° Tailwind CSS](https://tailwindcss.com/docs/flex-basis)  
+[4° Lucide React](https://lucide.dev/guide/packages/lucide-react)  
