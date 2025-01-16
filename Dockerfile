@@ -7,6 +7,8 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
+RUN npm install -D tailwindcss@3.4.10 postcss@8.4.41 autoprefixer@10.4.20
+
 # Expose the development server port
 EXPOSE 3000
 
