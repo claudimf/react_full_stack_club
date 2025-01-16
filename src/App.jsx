@@ -1,19 +1,13 @@
-import { useState } from "react";
+import AddTask from "./components/AddTask";
+import Tasks from "./components/Tasks";
 
 
 function App() {
-  const [message, setMessage] = useState("Olá Docker!");
-
   return (
     <div>
-      <h1>{message}</h1>
-      <button 
-        onClick={() => {
-          setMessage('Fui clicado');
-        }}
-        >
-          Mudar mensagem
-      </button>
+      <h1>Gerenciador de tarefas</h1>
+      <AddTask />
+      <Tasks />
     </div>
   );
 }
