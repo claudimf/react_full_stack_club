@@ -48,3 +48,4 @@ npm init --yes
 [2° Install Tailwind CSS with Vite](https://tailwindcss.com/docs/guides/vite)  
 [3° Tailwind CSS](https://tailwindcss.com/docs/flex-basis)  
 [4° Lucide React](https://lucide.dev/guide/packages/lucide-react)  
+[5° react-router-dom](https://www.npmjs.com/package/react-router-dom)  
