@@ -1,54 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 import { v4 } from "uuid";
 
 function App() {
-  const [tasks, setTasks] = useState([{
-    id: 1,
-    title: "Estudar programação",
-    description: "Estudar programação para se tornar fullstask",
-    isCompleted: false
-  },
-  {
-    id: 2,
-    title: "Estudar robótica",
-    description: "Estudar robótica para construir um robô",
-    isCompleted: false
-  },
-  {
-    id: 3,
-    title: "Estudar matemática",
-    description: "Estudar matemática para se tornar fullstask",
-    isCompleted: false
-  }
-]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
 
-function onTaskClick(taskId) {
-  const newTasks = tasks.map(task => {
-    if (task.id === taskId) {
-      return {...task, isCompleted: !task.isCompleted}
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  function onTaskClick(taskId) {
+    const newTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return { ...task, isCompleted: !task.isCompleted }
+      }
+      return task
+    });
+    setTasks(newTasks);
+  }
+
+  function onDeleteTaskClick(taskId) {
+    const newTasks = tasks.filter(task => task.id !== taskId)
+    setTasks(newTasks);
+  }
+
+  function onAddTaskSubmmit(title, description) {
+    const newTask = {
+      id: v4(),
+      title: title,
+      description: description,
+      isCompleted: false
     }
-    return task
-  });
-  setTasks(newTasks);
-}
 
-function onDeleteTaskClick(taskId) {
-  const newTasks = tasks.filter( task => task.id !== taskId)
-  setTasks(newTasks);
-}
-
-function onAddTaskSubmmit(title, description) {
-  const newTask = {
-    id: v4(),
-    title: title,
-    description: description,
-    isCompleted: false
+    setTasks([...tasks, newTask]);
   }
-
-  setTasks([... tasks, newTask]);
-}
 
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
@@ -56,12 +44,12 @@ function onAddTaskSubmmit(title, description) {
         <h1 className="text-3xl text-slate-100 font-bold text-center">
           Gerenciador de tarefas
         </h1>
-        <AddTask 
+        <AddTask
           onAddTaskSubmmit={onAddTaskSubmmit}
         />
-        <Tasks 
-          tasks={tasks} 
-          onTaskClick={onTaskClick} 
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
           onDeleteTaskClick={onDeleteTaskClick}
         />
       </div>
