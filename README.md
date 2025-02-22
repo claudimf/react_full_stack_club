@@ -49,3 +49,4 @@ npm init --yes
 [3° Tailwind CSS](https://tailwindcss.com/docs/flex-basis)  
 [4° Lucide React](https://lucide.dev/guide/packages/lucide-react)  
 [5° react-router-dom](https://www.npmjs.com/package/react-router-dom)  
+[6° jsonplaceholder](https://jsonplaceholder.typicode.com/)  
